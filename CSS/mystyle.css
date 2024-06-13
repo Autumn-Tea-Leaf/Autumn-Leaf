@@ -184,7 +184,7 @@ nav a:hover::after, nav a:focus::after {
     font-weight: 100;
     font-size: 30px;
     text-align: right; 
-    margin-bottom: 20px;
+    margin-bottom: 35px;
 }
 
 #intro button:not(#prev, #next) {
@@ -612,6 +612,23 @@ font-weight: 300;
     color: #495057;
     background-color: transparent;
 }
+
+.push {
+    /* margin-bottom: 26px; */
+    /* position: absolute; */
+    transform: translateY(-26px);
+    box-shadow: 0 26px 15px 0px rgba(0, 0, 0, 0.15);
+  }
+  
+  .black {
+    background: #2b2b2b;
+  }
+  
+  .gray {
+    background: #d6d6d6;
+    color: #2b2b2b;
+    font-weight: normal;
+  }
 
 .contact-footer {
     /* position: absolute;
