@@ -1,6 +1,6 @@
-$("button").mouseover(function () {
+$("#test1").mouseover(function () {
 	$(this).addClass("push");
 });
-$("button").mouseout(function () {
+$("#test1").mouseout(function () {
 	$(this).removeClass("push");
 });
