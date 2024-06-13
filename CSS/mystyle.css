@@ -197,7 +197,7 @@ nav a:hover::after, nav a:focus::after {
     border-radius: 15px;
     outline: 2px solid #495057;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    transition: all 0.3s, color 0.3s;
 }
 
 #intro button:not(#prev, #next):hover, #intro button:not(#prev, #next):focus {
