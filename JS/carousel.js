@@ -16,7 +16,7 @@ function updateCarousel() {
         }
     });
 
-    // Update dots
+    
     document.querySelectorAll('.dot').forEach((dot, index) => {
         dot.classList.toggle('active', index === activeIndex);
     });
@@ -29,7 +29,7 @@ function startAutoRotate() {
             activeIndex = (activeIndex + 1) % cards.length;
             updateCarousel();
         }
-    }, 3000); // Rotate every 3 seconds
+    }, 3000); 
 }
 
 function stopAutoRotate() {
@@ -44,35 +44,35 @@ function resetAutoRotate() {
     startAutoRotate();
 }
 
-// Prevent default behavior on all carousel links
+
 document.querySelectorAll('.carousel-item').forEach(item => {
     item.addEventListener('click', (e) => {
         e.preventDefault();
     });
 });
 
-// Handle user interactions
+
 cards.forEach((card, index) => {
     card.addEventListener('click', () => {
         isUserInteracting = true;
         if (index === activeIndex) {
-            // If clicking the active (center) card, redirect
+            
             const link = card.querySelector('a');
             if (link && link.href) {
                 window.location.href = link.href;
             }
         } else {
-            // If clicking any other card, make it the active card
+            
             activeIndex = index;
             updateCarousel();
             resetAutoRotate();
         }
         setTimeout(() => {
             isUserInteracting = false;
-        }, 5000); // Resume auto-rotation after 5 seconds
+        }, 5000);
     });
 
-    // Pause rotation on hover
+   
     card.addEventListener('mouseenter', () => {
         isUserInteracting = true;
     });
@@ -83,7 +83,6 @@ cards.forEach((card, index) => {
     });
 });
 
-// Handle keyboard navigation
 document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
         isUserInteracting = true;
@@ -96,11 +95,11 @@ document.addEventListener('keydown', (e) => {
         resetAutoRotate();
         setTimeout(() => {
             isUserInteracting = false;
-        }, 5000); // Resume auto-rotation after 5 seconds
+        }, 5000); 
     }
 });
 
-// Handle dot navigation
+
 document.querySelectorAll('.dot').forEach((dot, index) => {
     dot.addEventListener('click', () => {
         isUserInteracting = true;
@@ -109,10 +108,10 @@ document.querySelectorAll('.dot').forEach((dot, index) => {
         resetAutoRotate();
         setTimeout(() => {
             isUserInteracting = false;
-        }, 5000); // Resume auto-rotation after 5 seconds
+        }, 5000);
     });
 
-    // Pause rotation on hover
+    
     dot.addEventListener('mouseenter', () => {
         isUserInteracting = true;
     });
@@ -123,11 +122,11 @@ document.querySelectorAll('.dot').forEach((dot, index) => {
     });
 });
 
-// Initialize the carousel and start auto-rotation
+
 updateCarousel();
 startAutoRotate();
 
-// Smooth scrolling for navigation links
+
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
