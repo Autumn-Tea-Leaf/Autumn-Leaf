@@ -500,15 +500,18 @@ footer {
 }
 
 .art-container {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 50px 0;
     height: 90vh;
+    margin-top: 10vh;
 }
 
 #art {
     margin-right: 50px;
+    position: relative;
 }
 
 #art img {
@@ -516,6 +519,128 @@ footer {
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.back-button {
+    position: absolute;
+    left: -130px;
+    top: 20px;
+    color: white;
+    background-color: #495057;
+    border: none;
+    outline: 1px solid #495057;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: all cubic-bezier(0, 0, 0.2, 1) 0.2s;
+    box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.3);
+    transform: translateY(0);
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.back-button::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -26px;
+    height: 26px;
+    z-index: -1;
+}
+
+.back-button.push {
+    transform: translateY(-26px);
+    box-shadow: 0 26px 15px 0px rgba(0, 0, 0, 0.15);
+    will-change: transform;
+}
+
+.back-button:hover {
+    outline: 1px solid #495057;
+    color: #495057;
+    background-color: transparent;
+}
+
+#video {
+    position: relative;
+}
+
+#video .back-button {
+    position: absolute;
+    left: -130px;
+    top: 20px;
+    z-index: 1000;
+}
+
+@media (max-width: 1200px) {
+    .back-button {
+        left: -100px;
+        font-size: 22px;
+        width: 45px;
+        height: 45px;
+    }
+
+    #video .back-button {
+        left: -100px;
+    }
+}
+
+@media (max-width: 992px) {
+    .back-button {
+        left: -90px;
+        font-size: 20px;
+        width: 40px;
+        height: 40px;
+    }
+
+    #video .back-button {
+        left: -90px;
+    }
+}
+
+@media (max-width: 768px) {
+    #art {
+        position: relative;
+        margin-right: 0;
+    }
+
+    .back-button {
+        position: absolute;
+        left: 20px;
+        top: -50px;
+        font-size: 18px;
+        width: 35px;
+        height: 35px;
+    }
+
+    #video .back-button {
+        left: 20px;
+        top: -50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .back-button {
+        left: 10px;
+        top: -45px;
+        font-size: 16px;
+        width: 32px;
+        height: 32px;
+    }
+
+    #video .back-button {
+        left: 10px;
+        top: -45px;
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+    }
 }
 
 #info {
@@ -1081,8 +1206,11 @@ font-weight: 300;
         border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 4px;
         cursor: pointer;
-        transition: all 0.3s ease;
-        display: block;
+        transition: all cubic-bezier(0, 0, 0.2, 1) 0.2s;
+        box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.3);
+        transform: translateY(0);
+        position: relative;
+        z-index: 1;
     }
 
     .contact button::after {
