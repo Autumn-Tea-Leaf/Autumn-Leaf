@@ -162,9 +162,7 @@ nav a:hover::after, nav a:focus::after {
 
 #intro {
     display: flex;
-    /* flex-direction: column; */
     justify-content: center;
-    /* align-items: flex-start; */
     align-items: center;
     padding-right: 10%;
     height: 100vh;
@@ -172,16 +170,17 @@ nav a:hover::after, nav a:focus::after {
     padding: 0 10%;
     gap: 12rem;
     flex-wrap: wrap;
-}
-
-#intro a {
-    align-self: flex-end;
+    position: relative;
 }
 
 #intro-container {
     text-align: left;
-    /* align-self: flex-start; */
     max-width: 600px;
+    z-index: 2;
+}
+
+#intro a {
+    align-self: flex-end;
 }
 
 #intro h2 {
@@ -231,6 +230,7 @@ nav a:hover::after, nav a:focus::after {
     padding: 20px;
     margin: 50px auto;
     max-width: 1200px;
+    z-index: 1;
 }
 
 .ui-card {
@@ -767,27 +767,80 @@ font-weight: 300;
     width: 0%;
 }
 
+@media (max-width: 1024px) {
+    #intro {
+        gap: 4rem;
+        padding: 2rem;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    #intro-container {
+        max-width: 100%;
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .container {
+        margin: 0 auto;
+        padding: 1rem;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    #about {
+        padding: 2rem;
+    }
+
+    #about img {
+        width: 400px;
+    }
+
+    .video-container {
+        padding: 2rem;
+    }
+
+    #video video {
+        width: 600px;
+    }
+
+    .contact {
+        padding: 1rem;
+    }
+
+    .contact .form-section {
+        padding: 1rem;
+    }
+}
+
 @media (max-width: 768px) {
     header {
         padding: 10px 20px;
+        flex-direction: column;
     }
 
-    header img {
-        margin: auto;
+    .header__logo {
+        width: 40px;
     }
+
+    nav {
+        width: 100%;
+        margin: 10px 0;
+    }
+
     nav ul {
         width: 100%;
         justify-content: space-around;
         padding-top: 10px;
-        align-items: center;
     }
 
     nav a {
-        font-size: 12px;
+        font-size: 14px;
+        padding: 5px;
     }
 
     nav ul li {
-        margin: 10px 0;
+        margin: 5px;
     }
 
     #hero h1 {
@@ -797,46 +850,80 @@ font-weight: 300;
     #hero p {
         font-size: 18px;
     }
-    
+
     #intro {
-        padding: 0 5%;
+        padding: 2rem;
+        gap: 2rem;
+        height: auto;
+        min-height: 100vh;
     }
 
     #intro-container {
         max-width: 100%;
+        text-align: center;
     }
-    
+
+    #intro h2 {
+        text-align: center;
+        font-size: 24px;
+    }
+
+    #intro button:not(#prev, #next) {
+        padding: 15px 30px;
+    }
+
     #about {
-        flex-direction: column; 
-        align-items: center; 
+        height: auto;
+        min-height: 100vh;
+        padding: 2rem;
+    }
+
+    #about .wrapper {
+        flex-direction: column;
+        gap: 2rem;
     }
 
     #about .text-content {
-        margin-right: 0; 
+        margin-right: 0;
+        text-align: center;
+        align-items: center;
+    }
+
+    #about h2 {
+        font-size: 36px;
+    }
+
+    #about p {
+        font-size: 18px;
     }
 
     #about img {
-        margin-top: 20px;
-        width: 70%; 
+        width: 100%;
+        max-width: 300px;
     }
+
     .art-container {
+        height: auto;
+        min-height: 100vh;
+        padding: 2rem;
         flex-direction: column;
-        align-items: center;
         text-align: center;
     }
 
     #art {
-        margin-right: 0;
-        margin-bottom: 20px; 
+        margin: 0;
     }
 
     #art img {
-        width: 80%;
+        width: 100%;
+        max-width: 300px;
     }
 
     .video-container {
+        height: auto;
+        min-height: 100vh;
+        padding: 1rem;
         flex-direction: column;
-        align-items: center;
     }
 
     #video video {
@@ -844,23 +931,146 @@ font-weight: 300;
     }
 
     #info {
-        max-width: 90%;
+        padding: 1rem;
         text-align: center;
+        max-width: 100%;
     }
 
-    #error-page {
-        flex-direction: column;
-        text-align: center;
+    #info h2 {
+        font-size: 24px;
+        margin-bottom: 50px;
     }
 
-    #error-page .error-code {
-        font-size: 8px;
-        margin-right: 0;
-        margin-bottom: 20px;
+    .container {
+        width: 100%;
+        min-height: 400px;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        overflow: hidden;
     }
 
-    #error-page .error-details {
-        text-align: center;
+    .ui-card {
+        position: absolute;
+        width: 280px;
+        height: 380px;
+        left: 50%;
+        transform: translateX(-50%) scale(0.8);
     }
 
+    .ui-card.active {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+        z-index: 2;
+    }
+
+    .ui-card.prev {
+        transform: translateX(-130%) scale(0.8);
+        opacity: 0.3;
+        z-index: 1;
+    }
+
+    .ui-card.next {
+        transform: translateX(30%) scale(0.8);
+        opacity: 0.3;
+        z-index: 1;
+    }
+
+    .contact-container {
+        height: auto;
+        min-height: 90vh;
+        padding: 2rem 1rem;
+        margin: 0;
+        width: 100%;
+    }
+
+    .contact {
+        width: 100%;
+        max-width: 100%;
+        padding: 1.5rem;
+        margin: 0;
+        gap: 1.5rem;
+    }
+
+    .contact h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .contact .form-section {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .contact .form-section form {
+        width: 100%;
+        gap: 1rem;
+    }
+
+    .contact input,
+    .contact textarea {
+        width: 100%;
+        padding: 0.8rem;
+    }
+
+    .contact button {
+        width: 100%;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #hero h1 {
+        font-size: 24px;
+    }
+
+    #hero p {
+        font-size: 16px;
+    }
+
+    #intro h2 {
+        font-size: 20px;
+    }
+
+    #about h2 {
+        font-size: 28px;
+    }
+
+    #about p {
+        font-size: 16px;
+    }
+
+    .contact h1 {
+        font-size: 1.75rem;
+    }
+
+    .contact .form-section {
+        padding: 0.5rem;
+    }
+
+    .ui-card {
+        width: 260px;
+        height: 360px;
+    }
+
+    .ui-card.prev {
+        transform: translateX(-120%) scale(0.8);
+    }
+
+    .ui-card.next {
+        transform: translateX(20%) scale(0.8);
+    }
+
+    .contact-container {
+        padding: 1rem 0.5rem;
+    }
+
+    .contact {
+        padding: 1rem;
+    }
+
+    .contact input,
+    .contact textarea {
+        padding: 0.6rem;
+    }
 }
